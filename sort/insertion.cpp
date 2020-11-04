@@ -1,13 +1,16 @@
 #include <iostream>
 
-void swap(char* a, char i, char j)
+template <typename T>
+void swap(T* a, int i, int j)
 {
-    char t = a[i];
+    T t = a[i];
     a[i] = a[j];
     a[j] = t;
 }
 
-void insert(char* a, int n)
+// inserts a[n-1] into sorted partition a[0:n-2]
+template <typename T>
+void insert(T* a, size_t n)
 {
     for (int i = 0; i < n-1; i++)
     {
@@ -19,20 +22,22 @@ void insert(char* a, int n)
     }
 }
 
-void display(char* a, int n)
+template <typename T>
+void display(T* a, size_t n)
 {
     for (int i = 0; i < n; i++)
         std::cout << a[i] << ' ';
     std::cout << std::endl;
 }
 
-void sort(char* a, int n)
+template <typename T>
+void sort(T* a, size_t n)
 {
-    int len = 2;
+    int len = 1;
 
-    while (len <= n)
+    while (len < n)
     {
-        insert(a, len);
+        insert(a, len+1); // insert next element
         display(a, n);
         len++;
     }
@@ -41,8 +46,11 @@ void sort(char* a, int n)
 int main()
 {
     const int n = 13;
-    char a[n] = {'i','n','s','e','r','t','i','o','n','s','o','r','t'};
+    char a[] = {'i','n','s','e','r','t','i','o','n','s','o','r','t'};
 
     sort(a,n);
+
+    int b[] = {5,4,12,-1,0,-2,9};
+    sort(b, 7);
 
 }
