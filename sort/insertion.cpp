@@ -1,5 +1,13 @@
 #include <iostream>
 
+struct S
+{
+    int i;
+    float f;
+};
+
+bool operator < (const S& s1, const S& s2){return s1.f < s2.f;}
+
 template <typename T>
 void swap(T* a, int i, int j)
 {
@@ -30,6 +38,16 @@ void display(T* a, size_t n)
     std::cout << std::endl;
 }
 
+template <>
+void display(S* s, size_t n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << s[i].f << ' ';
+    }
+    std::cout << std::endl;    
+}
+
 template <typename T>
 void sort(T* a, size_t n)
 {
@@ -53,4 +71,6 @@ int main()
     int b[] = {5,4,12,-1,0,-2,9};
     sort(b, 7);
 
+    S s[] = {1,1.2,42,-2.0};
+    sort(s,2);
 }
