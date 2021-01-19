@@ -18,8 +18,14 @@ void swap(T* a, int i, int j)
 
 // inserts a[n-1] into sorted partition a[0:n-2]
 template <typename T>
-void insert(T* a, size_t n)
+void insert(T* a, int j)
 {
+    while (a[j] < a[j-1] && j > 0)
+    {
+	swap(a, j, j-1);
+	j--;
+    }
+    /*
     for (int i = 0; i < n-1; i++)
     {
         // std::cout << a[n-1] << ' ' << a[i] << std::endl;
@@ -28,6 +34,7 @@ void insert(T* a, size_t n)
             swap(a, i, n-1);
         }
     }
+     */
 }
 
 template <typename T>
@@ -51,13 +58,13 @@ void display(S* s, size_t n)
 template <typename T>
 void sort(T* a, size_t n)
 {
-    int len = 1;
+    int i = 1;
 
-    while (len < n)
+    while (i < n)
     {
-        insert(a, len+1); // insert next element
+        insert(a, i); // insert next element
         display(a, n);
-        len++;
+        i++;
     }
 }
 
