@@ -1,3 +1,9 @@
+/*
+ * Given an array of integers,
+ * rearrange the array so that all even
+ * numbers go before the odd numbers.
+ */
+
 #include <iostream>
 
 void display(int* s, int n)
