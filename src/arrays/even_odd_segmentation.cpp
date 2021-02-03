@@ -4,21 +4,8 @@
  * numbers go before the odd numbers.
  */
 
+#include "Array.h"
 #include <iostream>
-
-void display(int* s, int n)
-{
- 	for (int i = 0; i < n; i++)
-		std::cout << s[i] << " ";
-	std::cout << std::endl;
-}
-
-void swap(int* s, int i, int j)
-{
-	int tmp {s[j]};
-	s[j] = s[i];
-	s[i] = tmp;
-}
 
 void segment(int* s, int n)
 {
@@ -37,14 +24,35 @@ void segment(int* s, int n)
   }
 }
 
+void segment2(int* s, int n)
+{
+// a bit different version from above
+
+	int i0{0}, i1{n-1};
+
+	if (n < 2)
+		return;
+
+	bool done {false};
+
+	while(!done)
+	{
+		while(s[i0]%2 == 0){i0++;}
+		while(s[i1]%2 != 0){i1--;}
+		// std::cout << "i0, i1: " << i0 << " " << i1 << std::endl;
+		done = i0 >= i1;
+		if (!done)
+			swap(s,i0,i1);
+  		display(s,n);
+	}
+}
+
 int main()
 {
   int s[] {5,6,11,3,2,8};
 
   display(s,6);
 
-  segment(s,6);
-
-  display(s,6);
+  segment2(s,6);
 
 }
