@@ -32,4 +32,8 @@ int main()
 	dutch_flag(a, 7, 2);
 	dutch_flag(a, 7, 1);
 
+	int b[] {-3,0,-1,-5,1,1,-5,-3,4,2};
+
+	dutch_flag(b, 10, 5);
+	dutch_flag(b, 10, 2);
 }
