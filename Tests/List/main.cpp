@@ -1,5 +1,5 @@
 #include <iostream>
-#include "List.h"
+#include "list.h"
 
 int main() {
     
@@ -9,4 +9,6 @@ int main() {
     list->addAtTail(3);
 
     list->get(0);
+
+    list->display();
 }
